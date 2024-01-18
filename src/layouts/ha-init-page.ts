@@ -15,7 +15,7 @@ class HaInitPage extends LitElement {
   protected render() {
     return this.error
       ? html`
-          <p>Unable to connect to Home Assistant.</p>
+          <p>Unable to connect to ATMA Assist.</p>
           <p class="retry-text">
             Retrying in ${this._retryInSeconds} seconds...
           </p>
@@ -24,8 +24,8 @@ class HaInitPage extends LitElement {
             ? html`
                 <p>
                   It is possible that you are seeing this screen because your
-                  Home Assistant is not currently connected. You can ask it to
-                  come online from your
+                  ATMA Assist is not currently connected. You can ask it to come
+                  online from your
                   <a href="https://account.nabucasa.com/"
                     >Nabu Casa account page</a
                   >.

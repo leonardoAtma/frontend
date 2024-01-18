@@ -3,10 +3,10 @@ import { handleFetchPromise } from "../util/hass-call-api";
 
 export interface InstallationType {
   installation_type:
-    | "Home Assistant Operating System"
-    | "Home Assistant Container"
-    | "Home Assistant Supervised"
-    | "Home Assistant Core"
+    | "ATMA Assist Operating System"
+    | "ATMA Assist Container"
+    | "ATMA Assist Supervised"
+    | "ATMA Assist Core"
     | "Unknown";
 }
 

@@ -342,7 +342,7 @@ class DialogPersonDetail extends LitElement {
     );
     if (!credential) {
       showAlertDialog(this, {
-        title: "No Home Assistant credentials found.",
+        title: "No ATMA Assist credentials found.",
       });
       return;
     }

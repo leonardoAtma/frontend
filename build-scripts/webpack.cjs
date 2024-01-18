@@ -127,7 +127,7 @@ const createWebpackConfig = ({
               : require.resolve(resource);
           } catch (err) {
             console.error(
-              "Error in Home Assistant ignore plugin",
+              "Error in ATMA Assist ignore plugin",
               resource,
               context
             );

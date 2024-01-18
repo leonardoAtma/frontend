@@ -69,8 +69,8 @@ class DialogCalendarEventEditor extends LitElement {
   @state() private _submitting = false;
 
   // Dates are displayed in the timezone according to the user's profile
-  // which may be different from the Home Assistant timezone. When
-  // events are persisted, they are relative to the Home Assistant
+  // which may be different from the ATMA Assist timezone. When
+  // events are persisted, they are relative to the ATMA Assist
   // timezone, but floating without a timezone.
   private _timeZone?: string;
 

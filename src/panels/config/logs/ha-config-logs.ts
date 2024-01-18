@@ -20,7 +20,7 @@ import { navigate } from "../../../common/navigate";
 const logProviders: LogProvider[] = [
   {
     key: "core",
-    name: "Home Assistant Core",
+    name: "ATMA Assist Core",
   },
   {
     key: "supervisor",

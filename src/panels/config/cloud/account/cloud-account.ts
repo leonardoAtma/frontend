@@ -44,11 +44,11 @@ export class CloudAccount extends SubscribeMixin(LitElement) {
       <hass-subpage
         .hass=${this.hass}
         .narrow=${this.narrow}
-        header="Home Assistant Cloud"
+        header="ATMA Assist Cloud"
       >
         <div class="content">
           <ha-config-section .isWide=${this.isWide}>
-            <span slot="header">Home Assistant Cloud</span>
+            <span slot="header">ATMA Assist Cloud</span>
             <div slot="introduction">
               <p>
                 ${this.hass.localize(

@@ -265,10 +265,9 @@ class HaOnboarding extends litLocalizeLiteMixin(HassElement) {
   private async _fetchInstallationType(): Promise<void> {
     try {
       const response = await fetchInstallationType();
-      this._supervisor = [
-        "Home Assistant OS",
-        "Home Assistant Supervised",
-      ].includes(response.installation_type);
+      this._supervisor = ["ATMA Assist OS", "ATMA Assist Supervised"].includes(
+        response.installation_type
+      );
       if (this._supervisor) {
         // Only load if we have supervisor
         import("./onboarding-restore-backup");

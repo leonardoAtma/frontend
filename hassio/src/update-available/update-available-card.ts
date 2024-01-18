@@ -52,9 +52,9 @@ declare global {
 }
 
 const SUPERVISOR_UPDATE_NAMES = {
-  core: "Home Assistant Core",
-  os: "Home Assistant Operating System",
-  supervisor: "Home Assistant Supervisor",
+  core: "ATMA Assist Core",
+  os: "ATMA Assist Operating System",
+  supervisor: "ATMA Assist Supervisor",
 };
 
 type updateType = "os" | "supervisor" | "core" | "addon";
