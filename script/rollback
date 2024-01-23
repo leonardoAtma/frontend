@@ -1,0 +1,52 @@
+#!/bin/sh
+# Update repository on main B
+
+if [ "$EUID" -ne 0 ]; then
+    echo "Cannot run without superuser."
+    exit 1
+fi
+
+# Stop on errors
+set -e
+
+pasta_backup=".frontend_backup"
+pasta_destino="/srv/homeassistant/lib/python3.11/site-packages/hass_frontend/"
+
+echo_date() {
+  echo "[\033[34m$(date "+%H:%M:%S")\033[0m]"
+}
+
+ms_stop_iot(){
+  echo "$(echo_date) Stoping IoT to rollback:"
+}
+ms_start_rowback(){
+  echo "$(echo_date) \033[31mRollback starting:\033[0m"
+}
+ms_start_iot(){
+  echo "$(echo_date) Starting IoT:"
+}
+ms_fail_rollback(){
+  echo "$(echo_date) \033[31mRollback Fail, folder empty or not found"
+}
+
+# Stop HOME Assistant
+ms_stop_iot
+supervisorctl stop homeassistant
+
+if [ -d "$pasta_backup/hass_frontend" ]; then
+  has_backup=$(find "$pasta_backup" -mindepth 1 -maxdepth 1 -type f | wc -l)
+  if [ ! "$has_backup" -gt 0 ]; then
+    ms_start_rowback
+    rm -rf "$pasta_destino"
+    cp -rf "$pasta_backup/hass_frontend" "$pasta_destino"
+  else
+    ms_fail_rollback
+  fi
+else
+  ms_fail_rollback
+fi
+
+cp -rf "$pasta_destino" "$pasta_backup"
+
+ms_start_iot
+supervisorctl start homeassistant

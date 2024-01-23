@@ -6,4 +6,6 @@ set -e
 
 cd "$(dirname "$0")/.."
 
+export NODE_OPTIONS="--max-old-space-size=4096"
+
 ./node_modules/.bin/gulp build-app

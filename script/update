@@ -1,0 +1,153 @@
+#!/bin/sh
+# Update repository on main B
+
+if [ "$EUID" -ne 0 ]; then
+    echo "Cannot run without superuser."
+    exit 1
+fi
+
+# Stop on errors
+set -e
+
+pasta_backup=".frontend_backup"
+pasta_destino="/srv/homeassistant/lib/python3.11/site-packages/hass_frontend/"
+pasta_origem="$PWD/hass_frontend/"
+
+echo_date() {
+  echo "[\033[34m$(date "+%H:%M:%S")\033[0m]"
+}
+
+ms_stop_iot() {
+  echo "$(echo_date) Stoping IoT to update:"
+}
+ms_start_update() {
+  echo "$(echo_date) Start update:"
+}
+ms_save_backup() {
+  echo "$(echo_date) Saving Backup inside: \033[37m$pasta_backup\033[0m"
+}
+ms_end_update() {
+  echo "$(echo_date) Update Success:"
+}
+ms_start_iot() {
+  echo "$(echo_date) Starting IoT:"
+}
+ms_fail_update() {
+  echo "$(echo_date) \033[31mUpdate error:\033[0m"
+}
+ms_start_rowback() {
+  echo "$(echo_date) \033[31mRollback:\033[0m"
+}
+ms_abort_update() {
+  echo "$(echo_date) Abort update..."
+}
+
+if [ ! -d "$pasta_destino" ]; then
+  ms_fail_update 
+  echo "$(echo_date) \033[31mFolder not found -> '$pasta_destino'\033[0m."
+
+  want="";
+
+  while [ "$want" != "y" ] && [ "$want" != "n" ]; do
+    echo -n "$(echo_date) \033[33mWant update dir? (y/n):\033[0m "
+    read want
+
+    want=$(echo "$want" | tr '[:upper:]' '[:lower:]')
+    
+    if [ "$want" = "y" ]; then
+      echo -n "$(echo_date) New dir: "
+      read new_dir
+      if [ ! -d "$new_dir" ]; then
+        want=""
+        echo "\n$(echo_date) \033[31mfolder not found -> '$new_dir'\033[0m."
+      else
+        pasta_destino=$new_dir
+      fi
+    elif [ "$want" = "n" ]; then
+      ms_abort_update 
+      exit 1;
+    else
+      echo "$(echo_date) Invalid."
+    fi
+  done 
+fi
+
+if [ ! -d "$pasta_origem" ]; then
+  ms_fail_update 
+  echo "$(echo_date) \033[31mFolder not found -> '$pasta_origem'\033[0m."
+
+  want="";
+
+  while [ "$want" != "y" ] && [ "$want" != "n" ]; do
+    echo -n "$(echo_date) \033[33mWant update dir? (y/n):\033[0m "
+    read want
+
+    want=$(echo "$want" | tr '[:upper:]' '[:lower:]')
+    
+    if [ "$want" = "y" ]; then
+      echo -n "$(echo_date) New dir: "
+      read new_dir
+      if [ ! -d "$new_dir" ]; then
+        want=""
+        echo "\n$(echo_date) \033[31mfolder not found -> '$new_dir'\033[0m."
+      else
+        pasta_origem=$new_dir
+      fi
+    elif [ "$want" = "n" ]; then
+      ms_abort_update 
+      exit 1;
+    else
+      echo "$(echo_date) Invalid."
+    fi
+  done 
+fi
+
+# Salvando os arquivos em uma pasta de backup para rollback
+save_backup(){
+  ms_save_backup 
+
+  if [ -d "$pasta_backup" ]; then
+    rm -rf "$pasta_backup"
+    mkdir "$pasta_backup"
+  else
+    mkdir "$pasta_backup"
+  fi
+
+  cp -rf "$pasta_destino" "$pasta_backup"
+}
+
+# Execulta o update da nova versão
+exec_update(){
+  ms_start_update 
+  # Deleta a versão antiga
+  rm -rf "$pasta_destino"
+
+  # Copia a nova versão da pasta de origem para o destino
+  cp -rf "$pasta_origem" "$pasta_destino"
+
+  # Upade permission
+  chown -R homeassistant:homeassistant "$pasta_destino.."
+}
+
+# Stop HOME Assistant
+ms_stop_iot 
+supervisorctl stop homeassistant
+
+save_backup
+
+if_fail(){
+  ms_fail_update 
+  ms_start_rowback 
+
+  rm -rf "$pasta_destino"
+  cp -rf "$pasta_backup/hass_frontend" "$pasta_destino"
+}
+
+if exec_update; then
+  ms_end_update
+  ms_start_iot 
+else
+  if_fail
+fi
+
+supervisorctl start homeassistant

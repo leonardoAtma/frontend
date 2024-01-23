@@ -1,0 +1,26 @@
+#!/bin/bash
+
+pasta1="/home/mobile/dev/atma/hass/frontend-3/hass_frontend"
+pasta2="/home/mobile/dev/atma/hass/testeHash/hass_frontend"
+
+# Encontrar arquivos em ambas as pastas
+arquivos_pasta1=($(find "$pasta1" -type f))
+arquivos_pasta2=($(find "$pasta2" -type f))
+
+total_diferentes=0
+total=0
+# Comparar hashes e contar arquivos diferentes
+for arquivo1 in "${arquivos_pasta1[@]}"; do
+    arquivo2="$pasta2${arquivo1#$pasta1}"
+
+    hash1=$(sha256sum "$arquivo1" | awk '{print $1}')
+    hash2=$(sha256sum "$arquivo2" | awk '{print $1}')
+    ((total++))
+    if [ "$hash1" != "$hash2" ]; then
+        echo "Arquivos diferentes: $arquivo1 e $arquivo2"
+        ((total_diferentes++))
+    fi
+done
+
+echo "Total de arquivos diferentes: $total_diferentes"
+echo "Total de arquivos: $total"
