@@ -2562,6 +2562,7 @@
                                     "before": "Pred",
                                     "before_offset": "Predstih pred (voliteľné)",
                                     "description": {
+                                        "full": "Potvrdiť slnko{afterChoice, select, \n sunrise {po východe slnka}\n sunset {po západe slnka}\n other {}\n}{afterOffsetChoice, select, \n offset {ofset o {afterOffset}}\n other {}\n}{beforeChoice, select, \n sunrise { pred východom slnka}\n sunset { pred západom slnka}\n other {}\n}{beforeOffsetChoice, select, \n offset { ofset o {beforeOffset}}\n other {}\n}",
                                         "picker": "Ak je slnko nad alebo pod horizontom."
                                     },
                                     "label": "Slnko",

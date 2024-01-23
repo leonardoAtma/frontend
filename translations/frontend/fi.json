@@ -2558,10 +2558,11 @@
                                 },
                                 "sun": {
                                     "after": "Jälkeen",
-                                    "after_offset": "Auringonlaskun jälkeen (valinnainen viive)",
+                                    "after_offset": "Auringonlaskun jälkeen (valinnainen poikkeama)",
                                     "before": "Ennen",
-                                    "before_offset": "Ennen auringonlaskua (valinnainen viive)",
+                                    "before_offset": "Ennen auringonlaskua (valinnainen poikkeama)",
                                     "description": {
+                                        "full": "Vahvista aurinko{afterChoice, select, \n sunrise { auringonnousun jälkeen}\n sunset { auringonlaskun jälkeen}\n other {}\n}{afterOffsetChoice, select, \n offset { poikkeama {afterOffset}}\n other {}\n}{beforeChoice, select, \n sunrise { ennen auringonnousua}\n sunset { ennen auringonlaskua}\n other {}\n}{beforeOffsetChoice, select, \n offset { poikkeama {beforeOffset}}\n other {}\n}",
                                         "picker": "Jos aurinko on horisontin ylä- tai alapuolella."
                                     },
                                     "label": "Aurinko",
@@ -2832,8 +2833,8 @@
                                 "sun": {
                                     "description": {
                                         "picker": "Kun aurinko laskee tai nousee.",
-                                        "rises": "Kun aurinko nousee {hasDuration, select, \n true { muutos {duration}} \n other {}\n }",
-                                        "sets": "Kun aurinko laskee {hasDuration, select, \n true { muutos {duration}} \n other {}\n }"
+                                        "rises": "Kun aurinko nousee {hasDuration, select, \n true { poikkeama {duration}} \n other {}\n }",
+                                        "sets": "Kun aurinko laskee {hasDuration, select, \n true { poikkeama {duration}} \n other {}\n }"
                                     },
                                     "event": "Tapahtuma:",
                                     "label": "Aurinko",

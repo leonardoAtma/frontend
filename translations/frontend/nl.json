@@ -2562,6 +2562,7 @@
                                     "before": "Voor",
                                     "before_offset": "Afwijking voor (optioneel)",
                                     "description": {
+                                        "full": "Confirmeer de stand van de zon {afterChoice, select, \n sunrise { na zonsopgang}\n sunset { na zonsondergang}\n other {}\n}{afterOffsetChoice, select, \n offset { met offset {afterOffset}}\n other {}\n}{beforeChoice, select, \n sunrise { voor zonsopgang}\n sunset { voor zonsondergang}\n other {}\n}{beforeOffsetChoice, select, \n offset { met offset {beforeOffset}}\n other {}\n}",
                                         "picker": "Als de zon zich boven of onder de horizon bevindt."
                                     },
                                     "label": "Zon",
@@ -2657,6 +2658,7 @@
                         "re_order": "Herschikken",
                         "re_order_mode": {
                             "description_actions": "Je bent in herschikkingsmodus. Hiermee kun je jouw acties herschikken.",
+                            "description_all": "U bevindt zich in de herschikkingsmodus, u kunt uw triggers, voorwaarden en acties opnieuw ordenen.",
                             "description_conditions": "Je bent in herschikkingsmodus. Hiermee kun je jouw voorwaarden herschikken.",
                             "description_triggers": "Je bent in herschikkingsmodus. Hiermee kun je jouw triggers herschikken.",
                             "exit": "Sluiten",

@@ -1,19 +1,19 @@
 {
-  "id": 1184459440,
-  "node_id": "MDg6QXJ0aWZhY3QxMTg0NDU5NDQw",
+  "id": 1187438816,
+  "node_id": "MDg6QXJ0aWZhY3QxMTg3NDM4ODE2",
   "name": "translations",
-  "size_in_bytes": 4028826,
-  "url": "https://api.github.com/repos/home-assistant/frontend/actions/artifacts/1184459440",
-  "archive_download_url": "https://api.github.com/repos/home-assistant/frontend/actions/artifacts/1184459440/zip",
+  "size_in_bytes": 4029217,
+  "url": "https://api.github.com/repos/home-assistant/frontend/actions/artifacts/1187438816",
+  "archive_download_url": "https://api.github.com/repos/home-assistant/frontend/actions/artifacts/1187438816/zip",
   "expired": false,
-  "created_at": "2024-01-22T01:50:06Z",
-  "updated_at": "2024-01-22T01:50:06Z",
-  "expires_at": "2024-04-21T01:29:12Z",
+  "created_at": "2024-01-23T01:48:38Z",
+  "updated_at": "2024-01-23T01:48:38Z",
+  "expires_at": "2024-04-22T01:28:06Z",
   "workflow_run": {
-    "id": 7605272917,
+    "id": 7619728045,
     "repository_id": 38982731,
     "head_repository_id": 38982731,
     "head_branch": "dev",
-    "head_sha": "69139b35e130715a1af6a54d9160b114b89bf3db"
+    "head_sha": "d335dd4b8389d1355735919e65c16ea2c274d467"
   }
 }

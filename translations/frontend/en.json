@@ -2562,6 +2562,7 @@
                                     "before": "Before",
                                     "before_offset": "Before offset (optional)",
                                     "description": {
+                                        "full": "Confirm sun{afterChoice, select, \n sunrise { after sunrise}\n sunset { after sunset}\n other {}\n}{afterOffsetChoice, select, \n offset { offset by {afterOffset}}\n other {}\n}{beforeChoice, select, \n sunrise { before sunrise}\n sunset { before sunset}\n other {}\n}{beforeOffsetChoice, select, \n offset { offset by {beforeOffset}}\n other {}\n}",
                                         "picker": "If the sun is above or below the horizon."
                                     },
                                     "label": "Sun",

@@ -2562,6 +2562,7 @@
                                     "before": "Előtte:",
                                     "before_offset": "Eltolás előtte (opcionális)",
                                     "description": {
+                                        "full": "Ha {afterChoice, select, \n sunrise { napfelkelte után}\n sunset { naplemente után}\n other {}\n}{afterOffsetChoice, select, \n offset { {afterOffset} eltolással}\n other {}\n}{beforeChoice, select, \n sunrise { napfelkelte előtt}\n sunset { naplemente előtt}\n other {}\n}{beforeOffsetChoice, select, \n offset { {beforeOffset} eltolással}\n other {}\n}",
                                         "picker": "ha a nap a horizont felett vagy alatt van."
                                     },
                                     "label": "Nap",
@@ -2832,8 +2833,8 @@
                                 "sun": {
                                     "description": {
                                         "picker": "Amikor a nap lenyugszik vagy felkel.",
-                                        "rises": "Amikor a nap felkel{hasDuration, select, \n true {{duration} eltolással} \n other {}\n }",
-                                        "sets": "Amikor a nap lemegy{hasDuration, select, \n true {{duration} eltolással} \n other {}\n }"
+                                        "rises": "Amikor a nap felkel{hasDuration, select, \n true { {duration} eltolással} \n other {}\n }",
+                                        "sets": "Amikor a nap lemegy{hasDuration, select, \n true { {duration} eltolással} \n other {}\n }"
                                     },
                                     "event": "Esemény:",
                                     "label": "Nap",

@@ -2562,6 +2562,7 @@
                                     "before": "Vor",
                                     "before_offset": "Vor Versatz (optional)",
                                     "description": {
+                                        "full": "Bestätige die Sonne{afterChoice, select, \n sunrise { nach Sonnenaufgang}\n sunset { nach Sonnenuntergang}\n other {}\n}{afterOffsetChoice, select, \n offset { Offset von {afterOffset}}\n other {}\n}{beforeChoice, select, \n sunrise { vor Sonnenaufgang}\n sunset { vor Sonnenuntergang}\n other {}\n}{beforeOffsetChoice, select, \n offset { Offset von {beforeOffset}}\n other {}\n}",
                                         "picker": "Wenn die Sonne über oder unter dem Horizont steht."
                                     },
                                     "label": "Sonne",
@@ -2873,6 +2874,7 @@
                                         "full": "Trigger {secondsChoice, select, \n every {jede Sekunde von }\n every_interval {jede {seconds} Sekunden von }\n on_the_xth {bei der {secondsWithOrdinal} Sekunde von }\n other {}\n} {minutesChoice, select, \n every {jede Minute von }\n every_interval {jede {minutes} Minuten von }\n has_seconds {die {minutesWithOrdinal} Minute von }\n on_the_xth {bei der {minutesWithOrdinal} Minute von }\n other {}\n} {hoursChoice, select, \n every {jede Stunde}\n every_interval {jede {hours} Stunden}\n has_seconds_or_minutes {die {hoursWithOrdinal} Stunde}\n on_the_xth {bei der {hoursWithOrdinal} Stunde}\n other {}\n}",
                                         "initial": "Wenn ein Zeitmuster übereinstimmt",
                                         "invalid": "Ungültiges Zeitmuster für {parts}",
+                                        "ordinal": "{part, selectordinal, \none {#.}\ntwo {#.}\nfew {#.}\nother {#.}\n}",
                                         "picker": "Periodisch, in einem bestimmten Zeitintervall."
                                     },
                                     "hours": "Stunden",
