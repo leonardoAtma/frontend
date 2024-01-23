@@ -4,8 +4,7 @@
 # build
 build/
 dist/
-/hass_frontend/
-/translations/
+.frontend_backup/
 
 # yarn
 .yarn/*
